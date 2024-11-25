@@ -1,0 +1,16 @@
+def optimal_scheduling(jobs):
+    """Schedule jobs based on shortest job first."""
+    jobs.sort()  # Sort jobs by duration
+    total_time = 0
+    waiting_time = 0
+    
+    for job in jobs:
+        waiting_time += total_time
+        total_time += job
+        
+    return total_time, waiting_time
+
+# Example usage
+job_durations = [3, 2, 1, 5]
+total_duration, total_waiting_time = optimal_scheduling(job_durations)
+print(f"Total duration: {total_duration}, Total waiting time: {total_waiting_time}")

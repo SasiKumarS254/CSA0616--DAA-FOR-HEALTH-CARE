@@ -1,0 +1,8 @@
+def delete_element(arr, value):
+    """Delete all occurrences of value from arr."""
+    return [x for x in arr if x != value]
+
+# Example usage
+arr = [1, 2, 3, 4, 3, 5]
+deleted_arr = delete_element(arr, 3)
+print(f"Array after deleting 3: {deleted_arr}")

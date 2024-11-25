@@ -1,0 +1,20 @@
+def binary_search(arr, target):
+    """Returns the index of target in sorted arr, or -1 if not found."""
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2  # Calculate the mid index
+        if arr[mid] == target:
+            return mid  # Target found
+        elif arr[mid] < target:
+            left = mid + 1  # Search in the right half
+        else:
+            right = mid - 1  # Search in the left half
+    
+    return -1  # Target not found
+
+# Example usage
+sorted_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+target = 5
+index = binary_search(sorted_arr, target)
+print(f"Index of {target} in the array: {index}")

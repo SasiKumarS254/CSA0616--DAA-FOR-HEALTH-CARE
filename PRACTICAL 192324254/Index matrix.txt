@@ -1,0 +1,8 @@
+def index_matrix(rows, cols):
+    """Create an index matrix of size rows x cols."""
+    return [[(i, j) for j in range(cols)] for i in range(rows)]
+
+# Example usage
+matrix = index_matrix(3, 4)
+for row in matrix:
+    print(row)

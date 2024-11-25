@@ -1,0 +1,8 @@
+def space_separated_sequence(s):
+    """Split a string into space-separated sequences."""
+    return s.split()
+
+# Example usage
+s = "This is a space separated sequence"
+sequences = space_separated_sequence(s)
+print(f"Space-separated sequences: {sequences}")

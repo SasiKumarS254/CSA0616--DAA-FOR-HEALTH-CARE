@@ -1,0 +1,54 @@
+import numpy as np
+
+def print_board(board):
+    """Helper function to print the board."""
+    for row in board:
+        print(' '.join('O' if cell else '.' for cell in row))
+    print()
+
+def get_next_state(board):
+    """Calculate the next state of the board based on the rules of the Game of Life."""
+    rows, cols = len(board), len(board[0])
+    next_board = np.zeros((rows, cols), dtype=int)
+
+    for r in range(rows):
+        for c in range(cols):
+            # Count live neighbors
+            live_neighbors = 0
+            for dr in [-1, 0, 1]:
+                for dc in [-1, 0, 1]:
+                    if (dr == 0 and dc == 0):
+                        continue  # Skip the cell itself
+                    nr, nc = r + dr, c + dc
+                    if 0 <= nr < rows and 0 <= nc < cols:
+                        live_neighbors += board[nr][nc]
+            
+            # Apply the rules of the Game of Life
+            if board[r][c] == 1:  # Current cell is alive
+                if live_neighbors < 2 or live_neighbors > 3:
+                    next_board[r][c] = 0  # Cell dies
+                else:
+                    next_board[r][c] = 1  # Cell stays alive
+            else:  # Current cell is dead
+                if live_neighbors == 3:
+                    next_board[r][c] = 1  # Cell becomes alive
+
+    return next_board
+
+def game_of_life(board, generations):
+    """Simulate the Game of Life for a given number of generations."""
+    print("Initial Board:")
+    print_board(board)
+
+    for gen in range(generations):
+        board = get_next_state(board)
+        print(f"Generation {gen + 1}:")
+        print_board(board)
+
+# Example usage
+initial_board = np.array([[0, 1, 0],
+                           [0, 0, 1],
+                           [1, 1, 1],
+                           [0, 0, 0]])
+
+game_of_life(initial_board, 5)  # Simulate for 5 generations

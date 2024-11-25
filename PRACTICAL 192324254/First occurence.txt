@@ -1,0 +1,12 @@
+def first_occurrence(arr, target):
+    """Find the first occurrence of target in arr."""
+    for index, value in enumerate(arr):
+        if value == target:
+            return index
+    return -1  # Return -1 if the target is not found
+
+# Example usage
+arr = [5, 3, 7, 8, 3, 2]
+target = 3
+first_index = first_occurrence(arr, target)
+print(f"First occurrence of {target} is at index: {first_index}")

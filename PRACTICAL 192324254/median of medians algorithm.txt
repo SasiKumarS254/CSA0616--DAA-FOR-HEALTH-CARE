@@ -1,0 +1,31 @@
+def median_of_medians(arr):
+    """Find the median of the array using the Median of Medians algorithm."""
+    if len(arr) < 5:
+        return sorted(arr)[len(arr) // 2]
+
+    sublists = [arr[i:i + 5] for i in range(0, len(arr), 5)]
+    medians = [sorted(sublist)[len(sublist) // 2] for sublist in sublists]
+    return median_of_medians(medians)
+
+def select(arr, k):
+    """Select the k-th smallest element in arr."""
+    if len(arr) == 1:
+        return arr[0]
+    
+    pivot = median_of_medians(arr)
+    low = [x for x in arr if x < pivot]
+    high = [x for x in arr if x > pivot]
+    pivots = [x for x in arr if x == pivot]
+
+    if k < len(low):
+        return select(low, k)
+    elif k < len(low) + len(pivots):
+        return pivots[0]
+    else:
+        return select(high, k - len(low) - len(pivots))
+
+# Example usage
+arr = [3, 1, 2, 5, 4]
+k = 2  # Find the 3rd smallest element (0-indexed)
+result = select(arr, k)
+print(f"The {k+1}-th smallest element is: {result}")

@@ -1,0 +1,10 @@
+def move_piles(piles):
+    n = len(piles)
+    moves = 0
+    for i in range(n):
+        moves += abs(piles[i] - (i + 1))
+    return moves
+
+# Example usage
+piles = [3, 2, 1]
+print(move_piles(piles))  # Output: 2

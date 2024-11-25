@@ -1,0 +1,24 @@
+def segmented_array(arr, threshold):
+    """Segment an array into parts based on a threshold."""
+    segments = []
+    current_segment = []
+
+    for num in arr:
+        if num < threshold:
+            current_segment.append(num)
+        else:
+            if current_segment:
+                segments.append(current_segment)
+                current_segment = []
+    
+    # Append the last segment if it exists
+    if current_segment:
+        segments.append(current_segment)
+
+    return segments
+
+# Example usage
+arr = [1, 2, 5, 8, 3, 4, 10, 6]
+threshold = 5
+segments = segmented_array(arr, threshold)
+print(f"Segments based on threshold {threshold}: {segments}")

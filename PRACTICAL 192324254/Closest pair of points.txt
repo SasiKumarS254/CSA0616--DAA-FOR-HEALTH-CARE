@@ -1,0 +1,27 @@
+import math
+
+def distance(point1, point2):
+    """Calculate the Euclidean distance between two points."""
+    return math.sqrt((point1[0] - point2[0]) ** 2 + (point1[1] - point2[1]) ** 2)
+
+def closest_pair(points):
+    """Find the closest pair of points from a list of points."""
+    if len(points) < 2:
+        return None  # Not enough points to form a pair
+
+    min_distance = float('inf')
+    closest_points = (None, None)
+
+    for i in range(len(points)):
+        for j in range(i + 1, len(points)):
+            dist = distance(points[i], points[j])
+            if dist < min_distance:
+                min_distance = dist
+                closest_points = (points[i], points[j])
+    
+    return closest_points, min_distance
+
+# Example usage
+points = [(1, 2), (2, 3), (4, 5), (6, 1)]
+closest_points, min_dist = closest_pair(points)
+print(f"The closest pair of points is: {closest_points} with a distance of: {min_dist:.2f}")

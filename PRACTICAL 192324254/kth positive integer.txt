@@ -1,0 +1,25 @@
+def find_kth_positive(arr, k):
+    # Initialize a pointer for the next positive integer to check
+    missing_count = 0
+    current = 1  # Start checking from the first positive integer
+    index = 0  # Pointer for the array
+
+    while missing_count < k:
+        if index < len(arr) and arr[index] == current:
+            # If the current integer is in the array, move to the next in arr
+            index += 1
+        else:
+            # Current is missing
+            missing_count += 1
+            if missing_count == k:
+                return current  # Return the k-th missing positive integer
+        current += 1  # Move to the next positive integer
+
+    # In case we exit the loop, return the last checked current value
+    return current - 1  # This line should theoretically never be reached
+
+# Example usage
+arr = [2, 3, 4, 7, 11]
+k = 5
+result = find_kth_positive(arr, k)
+print(f"The {k}-th missing positive integer is: {result}")

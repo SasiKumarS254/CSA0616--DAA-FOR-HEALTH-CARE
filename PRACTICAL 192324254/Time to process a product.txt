@@ -1,0 +1,8 @@
+def total_processing_time(times):
+    """Calculate total processing time given a list of processing times."""
+    return sum(times)
+
+# Example usage
+processing_times = [2, 3, 5, 1, 4]  # Each element represents time for a product
+total_time = total_processing_time(processing_times)
+print(f"Total processing time: {total_time}")

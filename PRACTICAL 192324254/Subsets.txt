@@ -1,0 +1,8 @@
+def subsets(s):
+    result = [[]]
+    for elem in s:
+        result += [curr + [elem] for curr in result]
+    return result
+
+# Example usage
+print(subsets([1, 2, 3]))

@@ -1,0 +1,18 @@
+def count_tuples(arr, target_sum):
+    """Count the number of unique tuples (i, j) such that arr[i] + arr[j] = target_sum."""
+    count = 0
+    seen = set()
+    
+    for num in arr:
+        complement = target_sum - num
+        if complement in seen:
+            count += 1  # Found a valid pair (num, complement)
+        seen.add(num)  # Add the current number to the seen set
+    
+    return count
+
+# Example usage
+arr = [1, 2, 3, 4, 5]
+target_sum = 5
+tuple_count = count_tuples(arr, target_sum)
+print(f"Number of tuples that sum to {target_sum}: {tuple_count}")

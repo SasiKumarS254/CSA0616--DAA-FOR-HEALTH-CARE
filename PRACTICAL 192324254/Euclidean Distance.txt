@@ -1,0 +1,10 @@
+import math
+
+def euclidean_distance(p1, p2):
+    return math.sqrt(sum((p1[i] - p2[i]) ** 2 for i in range(len(p1))))
+
+# Example usage
+p1 = (1, 2)
+p2 = (4, 6)
+print(euclidean_distance(p1, p2))  # Output: 5.0
+
